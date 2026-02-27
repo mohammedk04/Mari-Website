@@ -1,286 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>For You 💗</title>
-  <style>
-    :root{
-      --pink1:#ffe4ef;
-      --pink2:#f8c8dc;
-      --pink3:#ffb7d1;
-      --white: #ffffff;
-      --ink: #1f1f1f;
-      --shadow: 0 20px 60px rgba(0,0,0,.12);
-      --radius: 26px;
-    }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>For You 💗</title>
 
-    * { box-sizing: border-box; }
+<style>
+body{
+  margin:0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg,#ffe6f0,#f8c8dc);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  overflow:hidden;
+  position:relative;
+}
 
-    body{
-      margin:0;
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding: 36px 14px;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color: var(--ink);
-      background:
-        radial-gradient(1000px 700px at 20% 15%, rgba(255,255,255,.85), transparent 60%),
-        radial-gradient(900px 700px at 85% 85%, rgba(255,255,255,.75), transparent 55%),
-        linear-gradient(135deg, var(--pink1), var(--pink2));
-      overflow:hidden;
-    }
+/* Floating Roses */
+.rose{
+  position:absolute;
+  font-size:28px;
+  animation: float 12s linear infinite;
+  opacity:.6;
+}
+@keyframes float{
+  from{ transform: translateY(110vh); }
+  to{ transform: translateY(-120vh); }
+}
 
-    /* Floating hearts */
-    .hearts{
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: .55;
-      filter: drop-shadow(0 8px 16px rgba(0,0,0,.08));
-    }
-    .heart{
-      position:absolute;
-      width: 18px;
-      height: 18px;
-      transform: rotate(45deg);
-      background: rgba(255,255,255,.85);
-      border-radius: 4px;
-      animation: floatUp linear infinite;
-    }
-    .heart::before,
-    .heart::after{
-      content:"";
-      position:absolute;
-      width: 18px;
-      height: 18px;
-      background: rgba(255,255,255,.85);
-      border-radius: 50%;
-    }
-    .heart::before{ left:-9px; top:0; }
-    .heart::after{ top:-9px; left:0; }
+/* Card */
+.card{
+  background: rgba(255,255,255,.85);
+  padding:40px 30px;
+  border-radius:30px;
+  width:90%;
+  max-width:750px;
+  box-shadow:0 25px 60px rgba(0,0,0,.15);
+  text-align:center;
+  position:relative;
+  z-index:2;
+}
 
-    @keyframes floatUp{
-      from{ transform: translateY(20vh) rotate(45deg); opacity:0; }
-      15%{ opacity:.9; }
-      to{ transform: translateY(-120vh) rotate(45deg); opacity:0; }
-    }
+/* Heading */
+h1{
+  font-size:42px;
+  margin-bottom:10px;
+  color:#222;
+}
 
-    .wrap{
-      width: min(760px, 100%);
-      position:relative;
-      z-index: 2;
-    }
+/* Love Box */
+.message{
+  background:#fff;
+  padding:25px;
+  border-radius:20px;
+  border:2px solid #f8c8dc;
+  margin:20px 0;
+  line-height:1.7;
+  font-size:17px;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
 
-    .card{
-      background: rgba(255,255,255,.72);
-      border: 1px solid rgba(255,255,255,.7);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 28px 22px;
-    }
+/* Highlight */
+.highlight{
+  background:#ffd6e8;
+  padding:2px 6px;
+  border-radius:8px;
+  font-weight:bold;
+}
 
-    .top{
-      display:flex;
-      gap: 18px;
-      align-items:center;
-      justify-content:space-between;
-      flex-wrap: wrap;
-      margin-bottom: 14px;
-    }
+/* Buttons */
+.buttons{
+  margin-top:20px;
+}
 
-    .badge{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.9);
-      border: 1px solid rgba(255,183,209,.55);
-      box-shadow: 0 10px 30px rgba(0,0,0,.06);
-      font-weight: 600;
-    }
+.btn{
+  padding:14px 28px;
+  font-size:18px;
+  border:none;
+  border-radius:14px;
+  cursor:pointer;
+  margin:0 10px;
+  transition:.2s ease;
+  box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
 
-    .logoHeart{
-      width: 14px; height: 14px;
-      transform: rotate(45deg);
-      background: #ff5fa2;
-      border-radius: 3px;
-      position: relative;
-    }
-    .logoHeart::before, .logoHeart::after{
-      content:"";
-      position:absolute;
-      width: 14px; height: 14px;
-      background: #ff5fa2;
-      border-radius: 50%;
-    }
-    .logoHeart::before{ left:-7px; top:0; }
-    .logoHeart::after{ top:-7px; left:0; }
+.yes{
+  background:linear-gradient(135deg,#ff5fa2,#ff2f7d);
+  color:white;
+}
 
-    h1{
-      margin: 8px 0 0;
-      font-size: clamp(28px, 4vw, 42px);
-      letter-spacing: -0.02em;
-      line-height: 1.08;
-    }
+.no{
+  background:white;
+  color:#333;
+}
 
-    .subtitle{
-      margin: 10px 0 0;
-      font-size: 16px;
-      opacity:.9;
-      line-height: 1.55;
-    }
+.btn:hover{
+  transform:translateY(-3px);
+}
 
-    .divider{
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,183,209,.9), transparent);
-      margin: 18px 0;
-    }
+.response{
+  margin-top:18px;
+  font-size:20px;
+  font-weight:bold;
+}
 
-    .message{
-      background: rgba(255,255,255,.82);
-      border: 1px solid rgba(255,183,209,.55);
-      border-radius: 20px;
-      padding: 18px 16px;
-      line-height: 1.7;
-      font-size: 16.5px;
-      box-shadow: 0 12px 34px rgba(0,0,0,.06);
-    }
+.song{
+  display:none;
+  margin-top:15px;
+}
 
-    .highlight{
-      font-weight: 700;
-      background: linear-gradient(90deg, rgba(255,183,209,.45), rgba(255,255,255,0));
-      padding: 0 6px;
-      border-radius: 10px;
-    }
-
-    .actions{
-      display:flex;
-      gap: 12px;
-      justify-content:center;
-      flex-wrap: wrap;
-      margin-top: 16px;
-    }
-
-    .btn{
-      appearance:none;
-      border: none;
-      cursor:pointer;
-      padding: 14px 20px;
-      font-size: 17px;
-      border-radius: 14px;
-      background: #ffffff;
-      color: var(--ink);
-      box-shadow: 0 10px 26px rgba(0,0,0,.12);
-      transition: transform .12s ease, box-shadow .12s ease;
-      min-width: 140px;
-    }
-    .btn:hover{ transform: translateY(-2px); box-shadow: 0 14px 34px rgba(0,0,0,.14); }
-    .btn:active{ transform: translateY(0px); }
-
-    .btnPink{
-      background: linear-gradient(135deg, #ff86b7, #ff5fa2);
-      color: white;
-      box-shadow: 0 12px 30px rgba(255,95,162,.35);
-    }
-    .btnPink:hover{ box-shadow: 0 16px 36px rgba(255,95,162,.42); }
-
-    .response{
-      margin-top: 14px;
-      text-align:center;
-      font-size: 18px;
-      font-weight: 700;
-      min-height: 28px;
-    }
-
-    .songWrap{
-      display:none;
-      margin-top: 14px;
-      text-align:center;
-    }
-
-    .smallNote{
-      margin-top: 16px;
-      text-align:center;
-      font-size: 13px;
-      opacity: .75;
-    }
-  </style>
+.song button{
+  background:white;
+  padding:12px 25px;
+  border:none;
+  border-radius:12px;
+  font-size:17px;
+  cursor:pointer;
+  box-shadow:0 8px 20px rgba(0,0,0,.12);
+}
+</style>
 </head>
 
 <body>
-  <!-- Floating hearts layer -->
-  <div class="hearts" aria-hidden="true">
-    <div class="heart" style="left: 8%;  bottom:-10%; animation-duration: 12s; animation-delay: 0s;"></div>
-    <div class="heart" style="left: 22%; bottom:-12%; animation-duration: 16s; animation-delay: 2s; transform: scale(.9) rotate(45deg);"></div>
-    <div class="heart" style="left: 38%; bottom:-14%; animation-duration: 14s; animation-delay: 1s; transform: scale(1.2) rotate(45deg);"></div>
-    <div class="heart" style="left: 55%; bottom:-11%; animation-duration: 18s; animation-delay: 3s; transform: scale(.8) rotate(45deg);"></div>
-    <div class="heart" style="left: 70%; bottom:-13%; animation-duration: 15s; animation-delay: .5s; transform: scale(1.1) rotate(45deg);"></div>
-    <div class="heart" style="left: 86%; bottom:-15%; animation-duration: 17s; animation-delay: 1.5s; transform: scale(.95) rotate(45deg);"></div>
+
+<!-- Decorative Roses -->
+<div class="rose" style="left:5%; animation-delay:0s;">🌹</div>
+<div class="rose" style="left:20%; animation-delay:3s;">🤍🌹</div>
+<div class="rose" style="left:40%; animation-delay:6s;">🌹</div>
+<div class="rose" style="left:60%; animation-delay:1s;">🌹</div>
+<div class="rose" style="left:80%; animation-delay:4s;">🤍🌹</div>
+<div class="rose" style="left:90%; animation-delay:7s;">🌹</div>
+
+<div class="card">
+  <h1>Will you be my valentine? 💗</h1>
+
+  <div class="message">
+    Hey love,<br><br>
+    I just want you to know that <span class="highlight">I’m grateful for you</span> —
+    for your smile, your patience, and the way you make ordinary moments feel magical.<br><br>
+    If you ever forget how loved you are, read this again:
+    <span class="highlight">you are my favorite place</span> — my calm, my joy, and my heart.
   </div>
 
-  <main class="wrap">
-    <section class="card">
-      <div class="top">
-        <div class="badge">
-          <span class="logoHeart" aria-hidden="true"></span>
-          <span>Just a little note for you</span>
-        </div>
-      </div>
+  <div class="buttons">
+    <button class="btn yes" onclick="yesClick()">Yes 💞</button>
+    <button class="btn no" onclick="noClick()">No 🙈</button>
+  </div>
 
-      <h1>Will you be my valentine? 💗</h1>
-      <p class="subtitle">
-        I made this for you—because you deserve something soft, sweet, and true.
-      </p>
+  <div id="response" class="response"></div>
 
-      <div class="divider"></div>
+  <div id="song" class="song">
+    <button onclick="window.open('https://www.youtube.com/watch?v=IVfXsZTHsEA&list=RDIVfXsZTHsEA&start_radio=1','_blank')">
+      Play our song 🎶
+    </button>
+  </div>
+</div>
 
-      <div class="message">
-        Hey love,<br /><br />
-        I just want you to know that <span class="highlight">I’m grateful for you</span>—for your smile,
-        your patience, and the way you make ordinary moments feel special.<br /><br />
-        If you ever forget how loved you are, come back here and read this again:
-        <span class="highlight">you are my favorite place</span>—my calm, my joy, and my heart.
-      </div>
+<script>
+function yesClick(){
+  document.getElementById("response").innerHTML="Yay!! 💖🥰 You just made my whole world brighter.";
+  document.getElementById("song").style.display="block";
+}
 
-      <div class="actions">
-        <button class="btn btnPink" onclick="handleYes()">Yes 💞</button>
-        <button class="btn" onclick="handleNo()">No 🙈</button>
-      </div>
+function noClick(){
+  document.getElementById("response").innerHTML="Aww okay… 🥺 I’ll still cherish you always.";
+  document.getElementById("song").style.display="none";
+}
+</script>
 
-      <div id="resp" class="response"></div>
-
-      <div id="songWrap" class="songWrap">
-        <button class="btn" onclick="openSong()">Play our song 🎶</button>
-        <div class="smallNote">It opens in a new tab</div>
-      </div>
-
-      <div class="smallNote">Made with love • pink & white forever</div>
-    </section>
-  </main>
-
-  <script>
-    function handleYes() {
-      document.getElementById("resp").textContent = "Yay!! 💖🥰 You just made my whole day.";
-      document.getElementById("songWrap").style.display = "block";
-    }
-
-    function handleNo() {
-      document.getElementById("resp").textContent = "Aww okay… 🥺 I’ll still be rooting for us.";
-      document.getElementById("songWrap").style.display = "none";
-    }
-
-    function openSong() {
-      window.open(
-        "https://www.youtube.com/watch?v=IVfXsZTHsEA&list=RDIVfXsZTHsEA&start_radio=1",
-        "_blank"
-      );
-    }
-  </script>
 </body>
 </html>
