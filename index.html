@@ -32,7 +32,7 @@ body{
 
 /* Card */
 .card{
-  background: rgba(255,255,255,.85);
+  background: rgba(255,255,255,.9);
   padding:40px 30px;
   border-radius:30px;
   width:90%;
@@ -41,6 +41,14 @@ body{
   text-align:center;
   position:relative;
   z-index:2;
+  transition: all .5s ease;
+}
+
+/* Glow effect when clicked */
+.card.glow{
+  box-shadow:0 0 40px rgba(255,95,162,.6),
+             0 25px 60px rgba(0,0,0,.15);
+  transform: scale(1.02);
 }
 
 /* Heading */
@@ -70,7 +78,7 @@ h1{
   font-weight:bold;
 }
 
-/* Buttons */
+/* Button */
 .buttons{
   margin-top:20px;
 }
@@ -81,34 +89,47 @@ h1{
   border:none;
   border-radius:14px;
   cursor:pointer;
-  margin:0 10px;
-  transition:.2s ease;
+  transition:.3s ease;
   box-shadow:0 10px 25px rgba(0,0,0,.15);
 }
 
-.yes{
+.mainBtn{
   background:linear-gradient(135deg,#ff5fa2,#ff2f7d);
   color:white;
 }
 
-.no{
-  background:white;
-  color:#333;
-}
-
 .btn:hover{
-  transform:translateY(-3px);
+  transform:translateY(-4px);
 }
 
+/* Response animation */
 .response{
   margin-top:18px;
   font-size:20px;
   font-weight:bold;
+  opacity:0;
+  transform:translateY(10px);
+  transition: all .6s ease;
 }
 
+.response.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* Song button */
 .song{
   display:none;
   margin-top:15px;
+  opacity:0;
+  transform:translateY(10px);
+  transition: all .6s ease;
+}
+
+.song.show{
+  display:block;
+  opacity:1;
+  transform:translateY(0);
 }
 
 .song button{
@@ -133,7 +154,7 @@ h1{
 <div class="rose" style="left:80%; animation-delay:4s;">🤍🌹</div>
 <div class="rose" style="left:90%; animation-delay:7s;">🌹</div>
 
-<div class="card">
+<div class="card" id="card">
   <h1>Habibet Omry 💗</h1>
 
   <div class="message">
@@ -145,8 +166,7 @@ h1{
   </div>
 
   <div class="buttons">
-    <button class="btn yes" onclick="yesClick()">Yes 💞</button>
-    <button class="btn no" onclick="noClick()">No 🙈</button>
+    <button class="btn mainBtn" onclick="clickMe()">Click Me! 💗</button>
   </div>
 
   <div id="response" class="response"></div>
@@ -159,14 +179,15 @@ h1{
 </div>
 
 <script>
-function yesClick(){
-  document.getElementById("response").innerHTML="Yay!! 💖🥰 You just made my whole world brighter.";
-  document.getElementById("song").style.display="block";
-}
+function clickMe(){
+  document.getElementById("card").classList.add("glow");
 
-function noClick(){
-  document.getElementById("response").innerHTML="Aww okay… 🥺 I’ll still cherish you always.";
-  document.getElementById("song").style.display="none";
+  const response = document.getElementById("response");
+  response.innerHTML="Yay!! 💖🥰 You are my forever and always.";
+  response.classList.add("show");
+
+  const song = document.getElementById("song");
+  song.classList.add("show");
 }
 </script>
 
