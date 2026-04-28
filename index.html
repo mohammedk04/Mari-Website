@@ -1,420 +1,621 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Easter Bunny 💛</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>For Someone Special 💗</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
 
-  <style>
-    :root{
-      --bg1:#fffdf2;
-      --bg2:#fff4b8;
-      --bg3:#fff9dc;
-      --card:rgba(255,255,255,.78);
-      --text:#2b2b2b;
-      --muted:rgba(43,43,43,.72);
-      --yellow:#f6c945;
-      --yellow2:#f3b61f;
-      --white:#ffffff;
-      --shadow:0 30px 90px rgba(0,0,0,.12);
-      --radius:34px;
-    }
+<style>
+:root{
+  --pink-soft:#fff1f7;
+  --pink:#ffc8dd;
+  --pink-deep:#ff5fa2;
+  --pink-rich:#ff2f7d;
+  --white:#ffffff;
+  --cream:#fffafc;
+  --text:#1f1f1f;
+  --muted:rgba(31,31,31,.7);
+  --gold:#f6c56f;
+  --shadow:0 35px 120px rgba(0,0,0,.16);
+}
 
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
+*{
+  box-sizing:border-box;
+}
 
-    body{
-      margin:0;
-      font-family:Inter, system-ui, sans-serif;
-      color:var(--text);
-      overflow:hidden;
-      background:
-        radial-gradient(900px 600px at 15% 10%, rgba(255,255,255,.95), transparent 55%),
-        radial-gradient(700px 500px at 85% 85%, rgba(255,255,255,.7), transparent 55%),
-        linear-gradient(135deg, var(--bg1), var(--bg2));
-      display:grid;
-      place-items:center;
-      padding:24px 14px;
-    }
+html,body{
+  margin:0;
+  min-height:100%;
+}
 
-    .aura{
-      position:fixed;
-      inset:-35%;
-      z-index:0;
-      background:
-        radial-gradient(circle at 20% 25%, rgba(255,255,255,.55), transparent 48%),
-        radial-gradient(circle at 75% 70%, rgba(246,201,69,.24), transparent 45%),
-        radial-gradient(circle at 50% 85%, rgba(255,255,255,.35), transparent 55%);
-      filter:blur(36px);
-      animation: drift 12s ease-in-out infinite alternate;
-      pointer-events:none;
-    }
+body{
+  font-family:Inter, sans-serif;
+  color:var(--text);
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 15% 15%, rgba(255,255,255,.95), transparent 32%),
+    radial-gradient(circle at 80% 85%, rgba(255,255,255,.75), transparent 35%),
+    radial-gradient(circle at 50% 30%, rgba(255,95,162,.16), transparent 40%),
+    linear-gradient(135deg,#fff7fb,#ffd6e8,#ffc8dd);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:30px 14px;
+}
 
-    @keyframes drift{
-      from{ transform:translate3d(-1.5%, -1%, 0) scale(1.02); }
-      to{ transform:translate3d(1.5%, 1%, 0) scale(1.06); }
-    }
+/* Background glow */
+.aura{
+  position:fixed;
+  inset:-40%;
+  background:
+    radial-gradient(circle at 20% 25%, rgba(255,95,162,.28), transparent 42%),
+    radial-gradient(circle at 80% 75%, rgba(255,255,255,.45), transparent 45%),
+    radial-gradient(circle at 50% 90%, rgba(246,197,111,.18), transparent 52%);
+  filter:blur(40px);
+  animation:auraMove 14s ease-in-out infinite alternate;
+  z-index:0;
+}
 
-    .floating{
-      position:fixed;
-      inset:0;
-      z-index:0;
-      pointer-events:none;
-      overflow:hidden;
-    }
+@keyframes auraMove{
+  from{transform:translate(-1.5%,-1%) scale(1.02);}
+  to{transform:translate(1.5%,1%) scale(1.07);}
+}
 
-    .item{
-      position:absolute;
-      font-size:24px;
-      opacity:.8;
-      animation: floatUp linear infinite;
-      filter:drop-shadow(0 10px 16px rgba(0,0,0,.08));
-    }
+/* Floating decor */
+.float-layer{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  overflow:hidden;
+  z-index:1;
+}
 
-    @keyframes floatUp{
-      from{
-        transform:translateY(110vh) rotate(0deg);
-        opacity:0;
-      }
-      15%{ opacity:.95; }
-      to{
-        transform:translateY(-120vh) rotate(180deg);
-        opacity:0;
-      }
-    }
+.float{
+  position:absolute;
+  font-size:24px;
+  opacity:.75;
+  animation:floatUp linear infinite;
+  filter:drop-shadow(0 12px 18px rgba(0,0,0,.10));
+}
 
-    .wrap{
-      width:min(920px, 100%);
-      position:relative;
-      z-index:1;
-    }
+@keyframes floatUp{
+  0%{transform:translateY(115vh) rotate(0deg) scale(.8); opacity:0;}
+  12%{opacity:.85;}
+  100%{transform:translateY(-120vh) rotate(220deg) scale(1.15); opacity:0;}
+}
 
-    .shell{
-      padding:2px;
-      border-radius:calc(var(--radius) + 2px);
-      background:linear-gradient(135deg,
-        rgba(246,201,69,.7),
-        rgba(255,255,255,.95),
-        rgba(243,182,31,.45)
-      );
-      background-size:250% 250%;
-      animation:borderShift 10s ease-in-out infinite;
-      box-shadow:var(--shadow);
-    }
+/* Main layout */
+.wrap{
+  position:relative;
+  z-index:3;
+  width:min(980px,100%);
+}
 
-    @keyframes borderShift{
-      0%{ background-position:0% 50%; }
-      50%{ background-position:100% 50%; }
-      100%{ background-position:0% 50%; }
-    }
+.frame{
+  padding:2px;
+  border-radius:38px;
+  background:linear-gradient(135deg,
+    rgba(255,95,162,.75),
+    rgba(255,255,255,.95),
+    rgba(255,47,125,.55),
+    rgba(246,197,111,.28)
+  );
+  background-size:300% 300%;
+  animation:borderFlow 10s ease-in-out infinite;
+  box-shadow:var(--shadow);
+}
 
-    .card{
-      position:relative;
-      border-radius:var(--radius);
-      background:var(--card);
-      backdrop-filter:blur(14px);
-      -webkit-backdrop-filter:blur(14px);
-      border:1px solid rgba(255,255,255,.7);
-      overflow:hidden;
-    }
+@keyframes borderFlow{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
 
-    .card::before{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      background:
-        radial-gradient(900px 260px at 30% 0%, rgba(255,255,255,.72), transparent 60%);
-      pointer-events:none;
-    }
+.card{
+  position:relative;
+  overflow:hidden;
+  border-radius:36px;
+  background:rgba(255,255,255,.78);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,.65);
+}
 
-    .card::after{
-      content:"";
-      position:absolute;
-      inset:12px;
-      border-radius:calc(var(--radius) - 12px);
-      border:1px solid rgba(255,255,255,.45);
-      pointer-events:none;
-    }
+.card::before{
+  content:"";
+  position:absolute;
+  inset:-20%;
+  background:
+    radial-gradient(900px 260px at 25% 0%, rgba(255,255,255,.85), transparent 60%),
+    radial-gradient(700px 260px at 75% 20%, rgba(255,95,162,.12), transparent 60%),
+    radial-gradient(600px 260px at 50% 100%, rgba(246,197,111,.12), transparent 65%);
+  animation:cardGlow 9s ease-in-out infinite alternate;
+  pointer-events:none;
+}
 
-    .content{
-      position:relative;
-      z-index:2;
-      padding:38px 32px 30px;
-      text-align:center;
-    }
+@keyframes cardGlow{
+  from{transform:translate(-2%,-1%) scale(1.02);}
+  to{transform:translate(2%,1%) scale(1.06);}
+}
 
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:10px 14px;
-      border-radius:999px;
-      background:rgba(255,255,255,.82);
-      border:1px solid rgba(246,201,69,.28);
-      box-shadow:0 18px 48px rgba(0,0,0,.05);
-      font-weight:600;
-    }
+.card::after{
+  content:"";
+  position:absolute;
+  inset:14px;
+  border-radius:24px;
+  border:1px solid rgba(255,255,255,.55);
+  pointer-events:none;
+}
 
-    .pill .dot{
-      width:12px;
-      height:12px;
-      border-radius:999px;
-      background:var(--yellow);
-      box-shadow:0 0 14px rgba(246,201,69,.55);
-    }
+/* Rose corners */
+.corner{
+  position:absolute;
+  z-index:2;
+  font-size:28px;
+  opacity:.9;
+  filter:drop-shadow(0 12px 18px rgba(0,0,0,.1));
+}
 
-    h1{
-      margin:16px 0 10px;
-      font-family:"Playfair Display", serif;
-      font-size:clamp(34px, 4.6vw, 58px);
-      line-height:1.04;
-      letter-spacing:-0.03em;
-    }
+.corner.top-left{
+  top:22px;
+  left:24px;
+  transform:rotate(-12deg);
+}
 
-    .subtitle{
-      margin:0 0 18px;
-      color:var(--muted);
-      line-height:1.75;
-      font-size:16.4px;
-      max-width:68ch;
-      margin-inline:auto;
-    }
+.corner.bottom-right{
+  bottom:22px;
+  right:24px;
+  transform:rotate(168deg);
+}
 
-    .panel{
-      background:rgba(255,255,255,.88);
-      border:1px solid rgba(246,201,69,.25);
-      border-radius:26px;
-      padding:22px 18px;
-      line-height:1.9;
-      font-size:16.8px;
-      box-shadow:0 24px 68px rgba(0,0,0,.05);
-      min-height:150px;
-    }
+.content{
+  position:relative;
+  z-index:4;
+  padding:46px 38px 34px;
+  text-align:center;
+}
 
-    .highlight{
-      font-weight:750;
-      background:linear-gradient(90deg, rgba(246,201,69,.35), rgba(255,255,255,0));
-      padding:0 6px;
-      border-radius:10px;
-    }
+/* Top label */
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 16px;
+  border-radius:999px;
+  background:rgba(255,255,255,.85);
+  border:1px solid rgba(255,95,162,.18);
+  box-shadow:0 18px 48px rgba(0,0,0,.06);
+  font-weight:700;
+  letter-spacing:.2px;
+}
 
-    .actions{
-      display:flex;
-      justify-content:center;
-      margin-top:20px;
-    }
+.heart-icon{
+  width:14px;
+  height:14px;
+  background:var(--pink-deep);
+  transform:rotate(45deg);
+  position:relative;
+  border-radius:3px;
+  box-shadow:0 0 18px rgba(255,95,162,.65);
+}
 
-    .btn{
-      position:relative;
-      appearance:none;
-      border:none;
-      cursor:pointer;
-      padding:15px 24px;
-      border-radius:18px;
-      font-size:17px;
-      font-weight:700;
-      letter-spacing:.2px;
-      transition:transform .18s ease, box-shadow .18s ease;
-    }
+.heart-icon::before,
+.heart-icon::after{
+  content:"";
+  position:absolute;
+  width:14px;
+  height:14px;
+  background:var(--pink-deep);
+  border-radius:50%;
+}
 
-    .btnPrimary{
-      color:#4a3b00;
-      background:linear-gradient(135deg, #fffdf7, #ffe88b);
-      box-shadow:0 20px 56px rgba(243,182,31,.28);
-      min-width:260px;
-    }
+.heart-icon::before{
+  left:-7px;
+  top:0;
+}
 
-    .btnPrimary:hover{
-      transform:translateY(-2px);
-    }
+.heart-icon::after{
+  top:-7px;
+  left:0;
+}
 
-    .btnPrimary::before{
-      content:"";
-      position:absolute;
-      inset:1px;
-      border-radius:17px;
-      background:linear-gradient(180deg, rgba(255,255,255,.6), rgba(255,255,255,0));
-      pointer-events:none;
-    }
+/* Headings */
+h1{
+  margin:18px 0 4px;
+  font-family:"Great Vibes", cursive;
+  font-size:clamp(54px,8vw,96px);
+  font-weight:400;
+  line-height:.95;
+  color:#24181d;
+  text-shadow:0 12px 34px rgba(255,95,162,.22);
+}
 
-    .response{
-      margin-top:18px;
-      min-height:28px;
-      font-size:18px;
-      font-weight:750;
-      opacity:0;
-      transform:translateY(10px);
-      transition:opacity .7s ease, transform .7s ease;
-    }
+.subtitle{
+  margin:0 auto 22px;
+  font-family:"Playfair Display", serif;
+  font-size:clamp(22px,3vw,34px);
+  font-weight:700;
+  max-width:780px;
+  line-height:1.18;
+}
 
-    .response.show{
-      opacity:1;
-      transform:translateY(0);
-    }
+.small{
+  margin:0 auto 22px;
+  max-width:680px;
+  color:var(--muted);
+  font-size:16.5px;
+  line-height:1.75;
+}
 
-    .eggRow{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:12px;
-      margin-top:20px;
-      font-size:20px;
-      opacity:.95;
-      flex-wrap:wrap;
-    }
+/* Love letter panel */
+.letter{
+  margin:0 auto;
+  max-width:760px;
+  background:rgba(255,255,255,.88);
+  border:1px solid rgba(255,95,162,.18);
+  border-radius:28px;
+  padding:24px 22px;
+  box-shadow:0 26px 70px rgba(0,0,0,.07);
+  text-align:left;
+  line-height:1.9;
+  font-size:17px;
+}
 
-    .widgets{
-      margin-top:18px;
-      display:grid;
-      grid-template-columns:repeat(3, minmax(0,1fr));
-      gap:14px;
-    }
+.letter strong{
+  background:linear-gradient(90deg,rgba(255,95,162,.24),rgba(255,255,255,0));
+  padding:0 7px;
+  border-radius:10px;
+}
 
-    .widget{
-      background:rgba(255,255,255,.8);
-      border:1px solid rgba(246,201,69,.22);
-      border-radius:20px;
-      padding:16px 14px;
-      box-shadow:0 14px 36px rgba(0,0,0,.05);
-      text-align:center;
-    }
+.signature{
+  margin-top:16px;
+  text-align:right;
+  font-family:"Great Vibes", cursive;
+  font-size:34px;
+  color:#ff2f7d;
+}
 
-    .widgetEmoji{
-      font-size:28px;
-      margin-bottom:8px;
-    }
+/* Widgets */
+.widgets{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  margin:22px auto 0;
+  max-width:760px;
+}
 
-    .widgetTitle{
-      font-weight:700;
-      margin-bottom:4px;
-    }
+.widget{
+  background:rgba(255,255,255,.78);
+  border:1px solid rgba(255,95,162,.16);
+  border-radius:24px;
+  padding:18px 14px;
+  box-shadow:0 16px 40px rgba(0,0,0,.06);
+}
 
-    .widgetText{
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.5;
-    }
+.widget-emoji{
+  font-size:32px;
+  margin-bottom:8px;
+}
 
-    .clicked{
-      box-shadow:
-        0 0 0 1px rgba(255,255,255,.6),
-        var(--shadow),
-        0 0 80px rgba(246,201,69,.28);
-    }
+.widget-title{
+  font-weight:800;
+  margin-bottom:5px;
+}
 
-    .bounce{
-      animation:bounce 1s ease;
-    }
+.widget-text{
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.55;
+}
 
-    @keyframes bounce{
-      0%,100%{ transform:scale(1); }
-      30%{ transform:scale(1.03); }
-      55%{ transform:scale(.995); }
-    }
+/* Button */
+.actions{
+  margin-top:24px;
+}
 
-    @media (max-width: 720px){
-      .widgets{
-        grid-template-columns:1fr;
-      }
-      .content{
-        padding:30px 20px 24px;
-      }
-      .btnPrimary{
-        min-width:unset;
-        width:100%;
-      }
-    }
-  </style>
+button{
+  border:none;
+  cursor:pointer;
+  border-radius:18px;
+  padding:15px 26px;
+  font-size:17px;
+  font-weight:800;
+  color:white;
+  background:linear-gradient(135deg,#ff6aaa,#ff2f7d);
+  box-shadow:0 20px 58px rgba(255,47,125,.32);
+  position:relative;
+  overflow:hidden;
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+
+button:hover{
+  transform:translateY(-3px);
+  box-shadow:0 26px 70px rgba(255,47,125,.42);
+}
+
+button::before{
+  content:"";
+  position:absolute;
+  inset:1px;
+  border-radius:17px;
+  background:linear-gradient(180deg,rgba(255,255,255,.35),transparent);
+  pointer-events:none;
+}
+
+button::after{
+  content:"";
+  position:absolute;
+  top:-50%;
+  left:-40%;
+  width:60%;
+  height:230%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.38),transparent);
+  transform:rotate(20deg);
+  opacity:0;
+}
+
+button:hover::after{
+  opacity:1;
+  animation:shine 1.2s ease;
+}
+
+@keyframes shine{
+  from{transform:translateX(-20%) rotate(20deg);}
+  to{transform:translateX(250%) rotate(20deg);}
+}
+
+.response{
+  margin-top:18px;
+  font-weight:800;
+  font-size:19px;
+  opacity:0;
+  transform:translateY(10px);
+  transition:.7s ease;
+}
+
+.response.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.bottom-decor{
+  margin-top:22px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:12px;
+  font-size:20px;
+  opacity:.95;
+}
+
+.line{
+  width:100px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,95,162,.55),transparent);
+}
+
+/* Click glow */
+.card.lit{
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.65),
+    0 35px 120px rgba(0,0,0,.16),
+    0 0 90px rgba(255,95,162,.36);
+}
+
+.pulse{
+  animation:pulse 1.2s ease-in-out 2;
+}
+
+@keyframes pulse{
+  0%,100%{transform:scale(1);}
+  35%{transform:scale(1.035);}
+  60%{transform:scale(.995);}
+}
+
+/* Confetti */
+.confetti{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:10;
+}
+
+.conf{
+  position:absolute;
+  font-size:18px;
+  animation:pop 1.35s ease-out forwards;
+  filter:drop-shadow(0 12px 14px rgba(0,0,0,.12));
+}
+
+@keyframes pop{
+  0%{opacity:0; transform:translate(0,0) scale(.7);}
+  15%{opacity:1;}
+  100%{
+    opacity:0;
+    transform:translate(var(--x),var(--y)) rotate(var(--r)) scale(1.15);
+  }
+}
+
+@media(max-width:760px){
+  body{
+    overflow:auto;
+  }
+
+  .widgets{
+    grid-template-columns:1fr;
+  }
+
+  .content{
+    padding:36px 22px 28px;
+  }
+
+  .letter{
+    text-align:center;
+  }
+
+  .corner{
+    opacity:.55;
+  }
+
+  .line{
+    width:60px;
+  }
+}
+</style>
 </head>
+
 <body>
-  <div class="aura"></div>
 
-  <div class="floating" aria-hidden="true">
-    <div class="item" style="left:6%; animation-duration:14s; animation-delay:0s;">🥚</div>
-    <div class="item" style="left:16%; animation-duration:18s; animation-delay:2s;">🐣</div>
-    <div class="item" style="left:28%; animation-duration:15s; animation-delay:1s;">🐰</div>
-    <div class="item" style="left:40%; animation-duration:20s; animation-delay:3s;">🌼</div>
-    <div class="item" style="left:53%; animation-duration:16s; animation-delay:.5s;">🥕</div>
-    <div class="item" style="left:66%; animation-duration:19s; animation-delay:2.5s;">🐥</div>
-    <div class="item" style="left:78%; animation-duration:17s; animation-delay:1.3s;">🥚</div>
-    <div class="item" style="left:90%; animation-duration:15s; animation-delay:3.2s;">🌷</div>
-  </div>
+<div class="aura"></div>
 
-  <main class="wrap">
-    <div class="shell">
-      <section class="card" id="card">
-        <div class="content">
-          <div class="pill">
-            <span class="dot"></span>
-            <span>A little Easter surprise for you</span>
+<div class="float-layer" aria-hidden="true">
+  <div class="float" style="left:5%; animation-duration:15s; animation-delay:0s;">🌹</div>
+  <div class="float" style="left:13%; animation-duration:19s; animation-delay:2s;">💗</div>
+  <div class="float" style="left:24%; animation-duration:16s; animation-delay:1s;">🌸</div>
+  <div class="float" style="left:36%; animation-duration:21s; animation-delay:3s;">🤍</div>
+  <div class="float" style="left:48%; animation-duration:17s; animation-delay:.5s;">🌹</div>
+  <div class="float" style="left:60%; animation-duration:20s; animation-delay:2.5s;">✨</div>
+  <div class="float" style="left:72%; animation-duration:18s; animation-delay:1.5s;">💞</div>
+  <div class="float" style="left:84%; animation-duration:22s; animation-delay:3.2s;">🌷</div>
+  <div class="float" style="left:93%; animation-duration:16s; animation-delay:.8s;">🌹</div>
+</div>
+
+<div class="confetti" id="confetti"></div>
+
+<main class="wrap">
+  <div class="frame">
+    <section class="card" id="card">
+
+      <div class="corner top-left">🌹 🌸 🤍🌹</div>
+      <div class="corner bottom-right">🌹 🌸 🤍🌹</div>
+
+      <div class="content">
+        <div class="badge">
+          <span class="heart-icon"></span>
+          <span>A little page made just for you</span>
+        </div>
+
+        <h1 id="title">For You</h1>
+
+        <div class="subtitle">
+          Someone beautiful, rare, and impossible not to admire.
+        </div>
+
+        <p class="small">
+          I wanted this to feel soft, elegant, and special — because that is exactly how I see you.
+        </p>
+
+        <div class="letter">
+          Hey beautiful,<br><br>
+
+          I just want you to know that <strong>I value you more than you probably realize</strong>.
+          There is something about you that feels so warm, so rare, and so easy to admire.
+          Your smile, your energy, your kindness, and the way you carry yourself all stand out to me in a way I cannot ignore.
+          <br><br>
+
+          I am genuinely attracted to you, not just because you are beautiful, but because there is something about your presence that makes everything feel softer, brighter, and more meaningful.
+          You have this way of making ordinary moments feel special without even trying.
+          <br><br>
+
+          If you ever forget how appreciated you are, come back to this page and remember:
+          <strong>you are valued, you are admired, and you are someone I feel lucky to care about.</strong>
+
+          <div class="signature">Always, from me 💗</div>
+        </div>
+
+        <div class="widgets">
+          <div class="widget">
+            <div class="widget-emoji">🌹</div>
+            <div class="widget-title">Beautiful</div>
+            <div class="widget-text">Not just in looks, but in the way you make things feel brighter.</div>
           </div>
 
-          <h1 id="title">Will you be my Easter Bunny? 🐰💛</h1>
-
-          <p class="subtitle">
-            I made this little Easter page just for you: soft, sweet, bright, and full of springtime love.
-          </p>
-
-          <div class="panel">
-            Hey you 💛<br><br>
-            Easter reminds me of all the sweetest things: sunshine, flowers, cozy moments, and little surprises.
-            But honestly, <span class="highlight">you make everything feel brighter</span> than any spring morning ever could.<br><br>
-            So I have one important question...
+          <div class="widget">
+            <div class="widget-emoji">💗</div>
+            <div class="widget-title">Valued</div>
+            <div class="widget-text">You matter deeply, and this page is just one small way to show it.</div>
           </div>
 
-          <div class="actions">
-            <button class="btn btnPrimary" id="mainBtn">Will you be my Easter Bunny? 🐰</button>
-          </div>
-
-          <div id="response" class="response"></div>
-
-          <div class="widgets">
-            <div class="widget">
-              <div class="widgetEmoji">🐣</div>
-              <div class="widgetTitle">Sweet</div>
-              <div class="widgetText">Like the cutest Easter surprise waiting just for you.</div>
-            </div>
-
-            <div class="widget">
-              <div class="widgetEmoji">🥚</div>
-              <div class="widgetTitle">Special</div>
-              <div class="widgetText">A little hidden treasure, just like how special you are to me.</div>
-            </div>
-
-            <div class="widget">
-              <div class="widgetEmoji">🌼</div>
-              <div class="widgetTitle">Bright</div>
-              <div class="widgetText">You make everything feel warmer, softer, and happier.</div>
-            </div>
-          </div>
-
-          <div class="eggRow" aria-hidden="true">
-            🥚 🌼 🐰 🐣 🌷 🥕 💛
+          <div class="widget">
+            <div class="widget-emoji">✨</div>
+            <div class="widget-title">Rare</div>
+            <div class="widget-text">Some people are easy to notice. You are impossible to forget.</div>
           </div>
         </div>
-      </section>
-    </div>
-  </main>
 
-  <script>
-    const btn = document.getElementById("mainBtn");
-    const response = document.getElementById("response");
-    const card = document.getElementById("card");
-    const title = document.getElementById("title");
+        <div class="actions">
+          <button id="btn">Click Me 💗</button>
+        </div>
 
-    btn.addEventListener("click", () => {
-      response.textContent = "Yay!! 🐰💛 You just made this Easter even sweeter.";
-      response.classList.add("show");
-      card.classList.add("clicked");
+        <div class="response" id="response">
+          You are genuinely special to me — more than words can fully explain. 💖
+        </div>
 
-      title.classList.remove("bounce");
-      void title.offsetWidth;
-      title.classList.add("bounce");
-    });
-  </script>
+        <div class="bottom-decor">
+          <span class="line"></span>
+          🌹 🤍 💗 🤍 🌹
+          <span class="line"></span>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<script>
+const btn = document.getElementById("btn");
+const card = document.getElementById("card");
+const title = document.getElementById("title");
+const response = document.getElementById("response");
+const confetti = document.getElementById("confetti");
+
+btn.addEventListener("click", () => {
+  card.classList.add("lit");
+
+  title.classList.remove("pulse");
+  void title.offsetWidth;
+  title.classList.add("pulse");
+
+  response.classList.add("show");
+
+  burst(btn);
+});
+
+function burst(element){
+  const rect = element.getBoundingClientRect();
+  const x = rect.left + rect.width / 2;
+  const y = rect.top + rect.height / 2;
+
+  const emojis = ["💗","💖","🌹","✨","🤍","🌸","💞"];
+  const amount = 34;
+
+  for(let i = 0; i < amount; i++){
+    const piece = document.createElement("span");
+    piece.className = "conf";
+    piece.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+
+    piece.style.left = x + "px";
+    piece.style.top = y + "px";
+
+    const dx = (Math.random() * 2 - 1) * (130 + Math.random() * 120);
+    const dy = -Math.random() * (160 + Math.random() * 150);
+    const rot = (Math.random() * 2 - 1) * 180;
+
+    piece.style.setProperty("--x", dx + "px");
+    piece.style.setProperty("--y", dy + "px");
+    piece.style.setProperty("--r", rot + "deg");
+
+    confetti.appendChild(piece);
+
+    setTimeout(() => {
+      piece.remove();
+    }, 1400);
+  }
+}
+</script>
+
 </body>
 </html>
